@@ -12,12 +12,29 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Ajouter catégorie</h4>
-                      <form class="cmxform" id="signupForm" method="post" action="{{url('/sauvecategorie')}}">
+                    @if (Session::has('status'))
+                        <div class="alert alert-success">
+
+                          {{Session::get('status')}}
+                        </div>
+                        
+                    @endif
+
+                    @if (count($errors)>0)
+                      <ul>
+                         <div class="alert alert-dan">
+                          @foreach ($errors->all() as $item)
+                            <li>{{$error}}</li>  
+                          @endforeach
+                         </div>
+                      </ul>
+                    @endif
+                      <form class="cmxform" id="signupForm" method="post" action="{{URL::to('/sauvecategorie')}}">
                         {{csrf_field()}}
                           <fieldset>
                                 <div class="form-group">
-                                 <label for="cname">Name (required, at least 2 characters)</label>
-                                        <input id="cname" class="form-control" name="categorie" minlength="2" type="text" required>
+                                 <label for="cname">Nom</label>
+                                        <input id="cname" class="form-control" name="categorie" minlength="2" type="text" required >
                                 
                                
                                     {{--
@@ -47,6 +64,6 @@
 @endsection
 
 @section('script')
-    <script src="back/js/form-validation.js"></script>
-    <script src="back/js/bt-maxLength.js"></script>
+  {{--  <script src="back/js/form-validation.js"></script>
+    <script src="back/js/bt-maxLength.js"></script>--}}
 @endsection

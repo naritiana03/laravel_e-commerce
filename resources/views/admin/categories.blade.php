@@ -26,14 +26,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2020/03/03</td>
-                        <td>
-                            <button class="btn btn-outline-primary">Edit</button>
-                            <button class="btn btn-outline-danger">Delete</button>
-                        </td>
-                    </tr>
+                    @foreach ($categorie as $category)
+                        <tr>
+                          <td>1</td>
+                          <td>{{$category->nom_categorie}}</td>
+                          <td>
+                              <button class="btn btn-outline-primary">Edit</button>
+                              <button class="btn btn-outline-danger">Delete</button>
+                          </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
