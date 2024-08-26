@@ -16,10 +16,10 @@
         </a>
         <div class="collapse" id="form-elements">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="basic_elements.html">Ajouter catégorie</a></li>
-            <li class="nav-item"><a class="nav-link" href="advanced_elements.html"> Ajouter éveènement</a></li>
-            <li class="nav-item"><a class="nav-link" href="validation.html">Ajouter slider</a></li>
-            <li class="nav-item"><a class="nav-link" href="wizard.html">Wizard</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::to('/ajoutercategorie')}}">Ajouter catégorie</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::to('/ajouterproduit')}}"> Ajouter éveènement</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::to('/ajouterslider')}}">Ajouter slider</a></li>
+            {{--<li class="nav-item"><a class="nav-link" href="wizard.html">Wizard</a></li>--}}
           </ul>
         </div>
       </li>
@@ -31,10 +31,10 @@
         </a>
         <div class="collapse" id="tables">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="basic-table.html">Catégories</a></li>
-            <li class="nav-item"> <a class="nav-link" href="data-table.html">Evènements</a></li>
-            <li class="nav-item"> <a class="nav-link" href="js-grid.html">Sliders</a></li>
-            <li class="nav-item"> <a class="nav-link" href="sortable-table.html">Commandes </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{URL::to('/categorie')}}">Catégories</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{URL::to('/produit')}}">Evènements</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{URL::to('/slider')}}">Sliders</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{URL::to('/commande')}}">Commandes </a></li>
           </ul>
         </div>
       </li>

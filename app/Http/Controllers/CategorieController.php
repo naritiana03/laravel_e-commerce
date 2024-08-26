@@ -11,4 +11,8 @@ class CategorieController extends Controller
     public function ajoutercategorie(){
         return view('admin.ajoutcatégorie');
     }
+
+    public function categorie(){
+        return view('admin.categories');
+    }
 }

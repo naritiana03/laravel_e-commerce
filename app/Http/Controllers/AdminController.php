@@ -23,5 +23,9 @@ class AdminController extends Controller
     public function log(){
         return view('admin.login_admin');
     }
+
+    public function commande(){
+        return view('admin.commandes');
+    }
 }
 

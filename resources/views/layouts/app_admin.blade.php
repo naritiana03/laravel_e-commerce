@@ -42,7 +42,16 @@
 
 
               {{--start content dashbord--}}
+              <div class="main-panel">
+                <div class="content-wrapper">
                     @yield('admin')
+                   
+               </div>
+                {{--start footeradmin --}}
+                  @include('includes.footeradmin')
+                {{--start footeradmin --}}
+
+             </div>
                {{--end content dashbord--}}
 
         <!-- partial:partials/_footer.html -->
@@ -77,7 +86,9 @@
 
 
         {{--SCRIPT DASHBORD--}}
-          @yield('script')
+        
+              @yield('script')
+              
 
   <!-- End custom js for this page-->
 </body>
