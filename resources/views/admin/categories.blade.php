@@ -4,6 +4,8 @@
     categorie
 @endsection
 
+<input type="hidden" name="id" value="{{ $increment=1 }}">
+
 @section('admin')
     
 
@@ -14,6 +16,13 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Catégories</h4>
+                  @if (Session::has('status'))
+                      <div class="alert alert-success">
+
+                          {{Session::get('status')}}
+                      </div>
+                  
+                 @endif
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
@@ -28,13 +37,19 @@
                   <tbody>
                     @foreach ($categorie as $category)
                         <tr>
-                          <td>1</td>
+                          <td>{{$increment}}</td>
                           <td>{{$category->nom_categorie}}</td>
                           <td>
-                              <button class="btn btn-outline-primary">Edit</button>
-                              <button class="btn btn-outline-danger">Delete</button>
+                          
+                              <button class="btn btn-outline-primary" onclick="window.location.href ='{{url('/editcategorie/'.$category->id)}}'">Editer</button>
+                            
+                            
+                               <a href="{{url('/deletecategorie/'.$category->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
+                          
+                             
                           </td>
                       </tr>
+                      <input type="hidden" name="id" value="{{ $increment=$increment +1 }}">
                     @endforeach
                   </tbody>
                 </table>

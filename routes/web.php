@@ -32,6 +32,9 @@ Route::get('/commande', 'App\Http\Controllers\AdminController@commande');
 Route::get('/ajoutercategorie', 'App\Http\Controllers\CategorieController@ajoutercategorie');
 Route::post('/sauvecategorie', 'App\Http\Controllers\CategorieController@sauvecategorie');
 Route::get('/categorie', 'App\Http\Controllers\CategorieController@categorie');
+Route::get('/editcategorie/{id}', 'App\Http\Controllers\CategorieController@editcategorie');
+Route::post('/modifiercategorie', 'App\Http\Controllers\CategorieController@modifiercategorie');
+Route::get('/deletecategorie/{id}', 'App\Http\Controllers\CategorieController@deletecategorie');
 
 
 

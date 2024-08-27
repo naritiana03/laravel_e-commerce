@@ -2,7 +2,7 @@
 @extends('layouts.app_admin')
 
 @section('title')
-    Ajouter catégorie
+    Editer catégorie
 @endsection
 
 @section('admin')
@@ -11,7 +11,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Ajouter catégorie</h4>
+                  <h4 class="card-title">Editer catégorie</h4>
                     @if (Session::has('status'))
                         <div class="alert alert-success">
 
@@ -29,12 +29,19 @@
                          </div>
                       </ul>
                     @endif
-                      <form class="cmxform" id="signupForm" method="post" action="{{URL::to('/sauvecategorie')}}">
+
+                    
+                      
+                      <form class="cmxform" id="signupForm" method="post" action="{{URL::to('/modifiercategorie')}}">
                         {{csrf_field()}}
                           <fieldset>
                                 <div class="form-group">
+                                    <input type="hidden" name="id" value="{{ $categorie->id }}">
                                  <label for="cname">Nom</label>
-                                        <input id="cname" class="form-control" name="categorie" minlength="2" type="text" required >
+                            
+                                     <input id="cname" class="form-control" name="categorie" minlength="2" type="text"  value="{{$categorie->nom_categorie}}" required >
+                                 
+                                        
                                 
                                
                                     {{--
@@ -52,7 +59,7 @@
                                         </div>
                                     --}}
                                 </div>
-                                <input class="btn btn-primary" type="submit" value="Ajouter">
+                                <input class="btn btn-primary" type="submit" value="Modifier" >
                           </fieldset>
                         </form>
                 </div>
