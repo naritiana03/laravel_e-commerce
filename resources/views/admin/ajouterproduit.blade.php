@@ -12,18 +12,53 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Ajouter produit</h4>
-                      <form class="cmxform" id="signupForm" method="post" action="App\Http\Controllers\ProduitController@sauvecategorie">
+
+                          @if (Session::has('status'))
+                              <div class="alert alert-success">
+
+                                {{Session::get('status')}}
+                              </div>
+                              
+                          @endif
+
+                        @if (count($errors)>0)
+                            <ul>
+                              <div class="alert alert-danger">
+                                @foreach ($errors->all() as $item)
+                                  <li>{{$error}}</li>  
+                                @endforeach
+                              </div>
+                            </ul> 
+                          @endif
+
+                      <form class="cmxform" id="signupForm" method="post" action="{{URL::to('/sauveproduit')}}" enctype="multipart/form-data">
+
+                        {{ csrf_field() }}
+
                           <fieldset>
                                 <div class="form-group">
                                      <label for="cname">Nom du produit (required, at least 2 characters)</label>
-                                        <input id="cname" class="form-control" name="produite_name" minlength="2" type="text" required>
+                                        <input id="cname" class="form-control" name="produit_name" minlength="2" type="text" required>
                                         <div class="form-group">
                                             <label for="cname">Prix du produit (required)</label>
                                             <input id="cname" class="form-control" type="number" name="produit_price" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="cname">Categorie du produit (required)</label>
-                                            <input id="cname" class="form-control" type="select" name="produit_categorie" placeholder="Select categorie" $categories,null>
+
+                                            <select name="produit_categorie" class="form-control">
+
+
+                                                    <option value="">Select categorie</option>
+
+                                                  @foreach($categorie as  $category)
+
+                                                    <option value="">{{ $category->nom_categorie }}</option>
+                                                  
+                                                  @endforeach
+                                            </select>
+
+                                            {{--<input id="cname" class="form-control" type="select" name="produit_categorie" placeholder="Select categorie" value="{{$categorie,null}}">--}}
                                         </div>
                                         <div class="form-group">
                                             <label for="cname">Image du produit (required)</label>
@@ -43,6 +78,6 @@
 @endsection
 
 @section('script')
-    <script src="back/js/form-validation.js"></script>
-    <script src="back/js/bt-maxLength.js"></script>
+    {{--<script src="back/js/form-validation.js"></script>
+    <script src="back/js/bt-maxLength.js"></script>--}}
 @endsection
