@@ -24,7 +24,7 @@
                         @if (count($errors)>0)
                             <ul>
                               <div class="alert alert-danger">
-                                @foreach ($errors->all() as $item)
+                                @foreach ($errors->all() as $error)
                                   <li>{{$error}}</li>  
                                 @endforeach
                               </div>
@@ -37,14 +37,14 @@
 
                           <fieldset>
                                 <div class="form-group">
-                                     <label for="cname">Nom du produit (required, at least 2 characters)</label>
-                                        <input id="cname" class="form-control" name="produit_name" minlength="2" type="text" required>
+                                     <label for="cname">Nom du produit </label>
+                                        <input id="cname" class="form-control" name="nom_produit" minlength="2" type="text" >
                                         <div class="form-group">
-                                            <label for="cname">Prix du produit (required)</label>
-                                            <input id="cname" class="form-control" type="number" name="produit_price" required>
+                                            <label for="cname">Prix du produit</label>
+                                            <input id="cname" class="form-control" type="number" name="prix_produit">
                                         </div>
                                         <div class="form-group">
-                                            <label for="cname">Categorie du produit (required)</label>
+                                            <label for="cname">Categorie du produit </label>
 
                                             <select name="produit_categorie" class="form-control">
 
@@ -61,8 +61,8 @@
                                             {{--<input id="cname" class="form-control" type="select" name="produit_categorie" placeholder="Select categorie" value="{{$categorie,null}}">--}}
                                         </div>
                                         <div class="form-group">
-                                            <label for="cname">Image du produit (required)</label>
-                                            <input id="cname" class="form-control" type="file" name="produit_image" required>
+                                            <label for="cname">Image du produit</label>
+                                            <input id="cname" class="form-control" type="file" name="image_produit" >
                                         </div>
                                 
                                 </div>

@@ -18,51 +18,47 @@ class ProduitController extends Controller
 
         return view('admin.ajouterproduit')->with('categorie', $categorie );
     }
-    public function sauveproduit(Request $request){
 
-        if ($request->hasFile('produit_image')) {
-            # 1 : get file name with ext
 
-            $fileNameWithExt = $request->file('produit_image')->getClientOriginalName();
-            # 2 get just file name
-            $fileName =  pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+    public function sauveproduit(Request $request)
+{
+    // Validation des données
+    $request->validate([
+        'nom_produit' => 'required|string|max:255',
+        'prix_produit' => 'required|numeric',
+        'produit_categorie' => 'required|exists:categories,id', // Assurez-vous que 'categories' est le nom de la table des catégories et 'id' est la colonne
+        'image_produit' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // Validation pour les images
+    ]);
 
-            # 3 get just file extension
-
-            $extension= $request-> file('produit_image')->getClientOriginalExtension();
-
-            # 4 file name to store
-
-            $fileNameToStore = $fileName. '_' .time().'.'.$extension;
-
-            #uploader
-
-            $path = $request-> file('produit_image')->storeAs('public/produit_image', $fileNameToStore);
-
-        }
-        else{
-            $fileNameToStore = 'noimage.jpg';
-        }
-
-            $produit = new Produit();
-
-            $produit -> nom_produit = $request->input('produit_name');
-
-            $produit -> prix_produit = $request->input('produit_price');
-
-            $produit -> produit_categorie = $request->input('produit_categorie');
-
-            $produit -> produit_image = $fileNameToStore;
-
-            $produit ->status = 1;
-
-            $produit->save();
-
-            return redirect('/ajouterproduit')->with('status',  'Le produit' .$produit->produit_name. 'a été ajouté avec succès'); 
-
+    // Gestion du fichier image
+    if ($request->hasFile('image_produit')) {
+        $fileNameWithExt = $request->file('image_produit')->getClientOriginalName();
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('image_produit')->getClientOriginalExtension();
+        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+        $request->file('image_produit')->storeAs('public/image_produit', $fileNameToStore);
+    } else {
+        $fileNameToStore = 'noimage.jpg';
     }
 
+    // Création d'une nouvelle instance de produit
+    $produit = new Produit();
+    $produit->nom_produit = $request->input('nom_produit');
+    $produit->prix_produit = $request->input('prix_produit'); // Utilisez le prix et non la catégorie ici
+    $produit->produit_categorie = $request->input('produit_categorie');
+    $produit->produit_image = $fileNameToStore;
+    $produit->status = 1;
+
+    // Sauvegarde dans la base de données
+    $produit->save();
+
+    // Redirection avec un message de succès
+    return redirect('/ajouterproduit')->with('status', 'Le produit ' . $produit->nom_produit . ' a été ajouté avec succès');
+}
+
+
     public function produit(){
+
         return view('admin.produit');
     }
 }
