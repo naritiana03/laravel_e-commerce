@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Http\Support\Facades\Storage;
+
 use App\Models\Categorie;
 
 class CategorieController extends Controller

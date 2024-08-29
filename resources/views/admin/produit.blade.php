@@ -3,12 +3,19 @@
 @section('title')
     produit
 @endsection
-
+<input type="hidden" name="id" value="{{ $increment=1 }}">
 @section('admin')
 
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Produit</h4>
+                @if (Session::has('status'))
+                    <div class="alert alert-success">
+
+                      {{Session::get('status')}}
+                    </div>
+          
+                  @endif
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
@@ -24,21 +31,31 @@
                         <th>Actions</th>
                     </tr>
                   </thead>
+                     
                   <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2020/03/03</td>
-                        <td>2020/03/03</td>
-                        <td>2020/03/03</td>
-                        <td>2020/03/03</td>
-                        <td>
-                            <label class="badge badge-info"></label>
-                        </td>
-                        <td>
-                          <button class="btn btn-outline-primary">Edit</button>
-                          <button class="btn btn-outline-danger">Delete</button>
-                        </td>
-                    </tr>
+                      @foreach ($produit as $prod)
+                        <tr>
+                            <td>{{$increment}}</td>
+                            <td><img src="/storage/image_produit/{{$prod->produit_image}}" alt="">{{$prod->image_produit}}</td>
+                            <td>{{$prod->nom_produit}}</td>
+                            <td>{{$prod->produit_categorie}}</td>
+                            <td>{{$prod->prix_produit}}</td>
+                            <td>
+
+                              @if ($prod->status ==1)
+                                  <label class="badge badge-success">Activé</label>
+                              @else
+                                    <label class="badge badge-info">Desactivé</label>
+                              @endif
+                                
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary" onclick="window.location.href ='{{url('/editproduit/'.$prod->id)}}'">Edit</button>
+                              <button class="btn btn-outline-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <input type="hidden" name="id" value="{{ $increment=$increment +1 }}">
+                      @endforeach
                   </tbody>
                 </table>
               </div>

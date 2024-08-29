@@ -2,7 +2,7 @@
 @extends('layouts.app_admin')
 
 @section('title')
-    Ajouter produit
+    Editer produit
 @endsection
 
 @section('admin')
@@ -11,7 +11,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Ajouter produit</h4>
+                  <h4 class="card-title">Editer produit</h4>
 
                           @if (Session::has('status'))
                               <div class="alert alert-success">
@@ -31,29 +31,30 @@
                             </ul> 
                           @endif
 
-                      <form class="cmxform" id="signupForm" method="POST" action="{{URL::to('/sauveproduit')}}" enctype="multipart/form-data">
+                      <form class="cmxform" id="signupForm" method="POST" action="{{URL::to('/modifierproduit')}}" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
 
                           <fieldset>
                                 <div class="form-group">
+                                    <input type="hidden" name="id" value="{{ $produit->id }}">
                                      <label for="cname">Nom du produit </label>
-                                        <input id="cname" class="form-control" name="nom_produit" minlength="2" type="text" >
+                                        <input id="cname" class="form-control" name="nom_produit" minlength="2" type="text" value="{{$produit->nom_produit}}" >
                                         <div class="form-group">
                                             <label for="cname">Prix du produit</label>
-                                            <input id="cname" class="form-control" type="number" name="prix_produit">
+                                            <input id="cname" class="form-control" type="number" name="prix_produit" value="{{$produit->prix_produit}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="cname">Categorie du produit </label>
 
-                                            <select name="produit_categorie" class="form-control">
+                                            <select name="produit_categorie" class="form-control" >
 
 
                                                     <option value="">Select categorie</option>
 
                                                          @foreach($categorie as  $category)
 
-                                                            <option value="{{$category,null}}" > {{ $category }}</option>
+                                                            <option value="{{$category}}" {{$category == $produit->produit_categorie ? 'selected' : ''}} > {{ $category }}</option>
                                                   
                                                          @endforeach
                                             </select>
@@ -66,7 +67,7 @@
                                         </div>
                                 
                                 </div>
-                                <input class="btn btn-primary" type="submit" value="Ajouter">
+                                <input class="btn btn-primary" type="submit" value="Modifier">
                           </fieldset>
                         </form>
                 </div>
