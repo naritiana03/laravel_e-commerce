@@ -51,10 +51,16 @@
                             </td>
                             <td>
                               <button class="btn btn-outline-primary" onclick="window.location.href ='{{url('/editproduit/'.$prod->id)}}'">Edit</button>
-                              <button class="btn btn-outline-danger">Delete</button>
+                                  <a href="{{url('/deleteproduit/'.$prod->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
+
+                                  @if ($prod->status == 1)
+                                      <button class="btn btn-outline-warning" onclick="window.location.href ='{{url('/desactiver/'.$prod->id)}}'">Desactiver</button>
+                                  @else
+                                      <button class="btn btn-outline-success" onclick="window.location.href ='{{url('/activer/'.$prod->id)}}'">Activer</button>
+                                  @endif
                             </td>
                         </tr>
-                        <input type="hidden" name="id" value="{{ $increment=$increment +1 }}">
+                        <input type="hidden" name="id" value="{{ $increment=  $increment +1 }}">
                       @endforeach
                   </tbody>
                 </table>

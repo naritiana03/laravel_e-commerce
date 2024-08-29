@@ -38,12 +38,16 @@ Route::get('/deletecategorie/{id}', 'App\Http\Controllers\CategorieController@de
 
 
 
+
 //Route Produit
 Route::get('/ajouterproduit', 'App\Http\Controllers\ProduitController@ajouterproduit');
 Route::post('/sauveproduit', 'App\Http\Controllers\ProduitController@sauveproduit');
 Route::get('/produit', 'App\Http\Controllers\ProduitController@produit')->name('sauveproduit');
 Route::get('/editproduit/{id}', 'App\Http\Controllers\ProduitController@editproduit');
 Route::post('/modifierproduit' ,'App\Http\Controllers\ProduitController@modifierproduit');
+Route::get('/deleteproduit/{id}', 'App\Http\Controllers\ProduitController@deleteproduit');
+Route::get('/activer/{id}', 'App\Http\Controllers\ProduitController@activer');
+Route::get('/desactiver/{id}', 'App\Http\Controllers\ProduitController@desactiver');
 
 
 

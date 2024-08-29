@@ -134,7 +134,7 @@ class ProduitController extends Controller
         if ($produit->produit_image != 'noimage') {
             # code...
 
-            Storage::delete('public/image_produit/' .$produit->image); 
+            Storage::delete('public/image_produit/' .$produit->produit_image); 
 
             $produit->produit_image =$fileNameToStore;
         }
@@ -142,5 +142,44 @@ class ProduitController extends Controller
         $produit ->update();
 
         return redirect('/produit')->with('status', 'Le produit ' . $produit->nom_produit . ' a été modifié avec succès');
+    }
+
+    public function deleteproduit($id){
+
+        $produit = Produit::find($id);
+
+        if ($produit->produit_image != 'noimage') {
+            # code...
+
+            Storage::delete('public/image_produit/' .$produit->produit_image); 
+
+            
+        }
+
+        $produit->delete();
+
+        return redirect('/produit')->with('produit', 'Le produit ' .$produit->nom_produit. 'a été supprimé avec succès' );
+    }
+
+    public function activer($id){
+
+        $produit = Produit::find($id);
+
+        $produit->status = 1;
+
+        $produit->update();
+
+        return redirect('/produit')->with('produit', 'Le produit ' .$produit->nom_produit. 'a été activé avec succès' );
+    }
+
+    public function desactiver($id){
+
+        $produit = Produit::find($id);
+
+        $produit->status = 0;
+
+        $produit->update();
+
+        return redirect('/produit')->with('produit', 'Le produit ' .$produit->nom_produit. 'a été desactivé avec succès' );
     }
 }
