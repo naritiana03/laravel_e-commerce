@@ -36,51 +36,43 @@
                                   <th>Total</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr class="text-center">
-                                  <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-                                  
-                                  <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
-                                  
-                                  <td class="product-name">
-                                      <h3>Bell Pepper</h3>
-                                      <p>Far far away, behind the word mountains, far from the countries</p>
-                                  </td>
-                                  
-                                  <td class="price">$4.90</td>
-                                  <form action="">
-                                      <td class="quantity">
-                                          <div class="input-group mb-3">
-                                          <input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                      </div>
-                                  </form>
-                                  
+
+                                  @if (Session::has('cart'))
                                       
-                                </td>
-                                  
-                                  <td class="total">$4.90</td>
-                                </tr><!-- END TR-->
+                                  @endif
+
+                              <tbody>
+
+                                  @foreach ($produit as $prod)
+                                      <tr class="text-center">
+                                            <td class="product-remove"><a href="/retirerproduit/{{$prod ['product_id']}}"><span class="ion-ios-close"></span></a></td>
+                                            
+                                            <td class="image-prod"><div class="img" style="background-image:url(/storage/image_produit/{{$prod['image_produit']}});"></div></td>
+                                            
+                                            <td class="product-name">
+                                                <h3>{{$prod['nom_produit']}}</h3>
+                                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                            </td>
+                                            
+                                            <td class="price">MGA {{$prod['prix_produit']}}</td>
+                                            <form action="{{URL::to('/modifierquantite/'.$prod['product_id'])}}" method="POST">
+                                              @csrf
+                                                <td class="quantity">
+                                                    <div class="input-group mb-3">
+                                                    <input type="number" name="quantity" class="quantity form-control input-number" value="{{$prod['qty']}}" min="1" >
+                                                </div>
+                                                <input type="submit" value="Modifier" class="btn btn-success">
+                                            </form>
+                                            
+                                                
+                                          </td>
+                                            
+                                            <td class="total">MGA{{$prod['prix_produit']*$prod['qty']}}</td>
+                                      </tr><!-- END TR-->
+                                  @endforeach
+
   
-                                <tr class="text-center">
-                                  <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-                                  
-                                  <td class="image-prod"><div class="img" style="background-image:url(images/product-4.jpg);"></div></td>
-                                  
-                                  <td class="product-name">
-                                      <h3>Bell Pepper</h3>
-                                      <p>Far far away, behind the word mountains, far from the countries</p>
-                                  </td>
-                                  
-                                  <td class="price">$15.70</td>
-                                  
-                                  <td class="quantity">
-                                      <div class="input-group mb-3">
-                                       <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                    </div>
-                                </td>
-                                  
-                                  <td class="total">$15.70</td>
-                                </tr><!-- END TR-->
+                               
                               </tbody>
                             </table>
                         </div>
@@ -142,7 +134,7 @@
                               <span>$17.60</span>
                           </p>
                       </div>
-                      <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                      <p><a href="{{url('/checkout')}}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
                   </div>
               </div>
               </div>

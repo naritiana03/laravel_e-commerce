@@ -16,7 +16,14 @@ Route::get('/checkout', 'App\Http\Controllers\ClientController@checkout');
 Route::get('/shop', 'App\Http\Controllers\ClientController@shop');
 Route::get('/login', 'App\Http\Controllers\ClientController@login');
 Route::get('/signup', 'App\Http\Controllers\ClientController@signup');
-Route::get('/paiement', 'App\Http\Controllers\ClientController@paiement');
+Route::get('/select_par_cat/{nom}', 'App\Http\Controllers\ClientController@select');
+Route::get('/ajoutercart/{id}', 'App\Http\Controllers\ClientController@ajoutercart');
+Route::post('/modifierquantite/{id}', 'App\Http\Controllers\ClientController@modifiercart');
+Route::get('/retirerproduit/{id}', 'App\Http\Controllers\ClientController@retirerproduit');
+Route::post('/creercompte', 'App\Http\Controllers\ClientController@creercompte');
+Route::post('/accedercompte', 'App\Http\Controllers\ClientController@accedercompte');
+Route::get('/logout', 'App\Http\Controllers\ClientController@logout');
+
 
 
 //Route Admin
@@ -54,5 +61,10 @@ Route::get('/desactiver/{id}', 'App\Http\Controllers\ProduitController@desactive
 //Route Sliders
 Route::get('/ajouterslider', 'App\Http\Controllers\SliderController@ajouterslider');
 Route::post('/sauveslider', 'App\Http\Controllers\SliderController@sauveslider');
-Route::get('/slider', 'App\Http\Controllers\SliderController@slider');
+Route::get('/slider', 'App\Http\Controllers\SliderController@slider')->name('sauveslider');
+Route::get('/editslider/{id}','App\Http\Controllers\SliderController@editslider');
+Route::post('/modifierslider','App\Http\Controllers\SliderController@modifierslider');
+Route::get('/activerslider/{id}', 'App\Http\Controllers\SliderController@activerslider');
+Route::get('/desactiverslider/{id}', 'App\Http\Controllers\SliderController@desactiverslider');
+Route::get('/deleteslider/{id}', 'App\Http\Controllers\SliderController@deleteslider');
 

@@ -2,7 +2,7 @@
 @extends('layouts.app_admin')
 
 @section('title')
-    Ajouter slider
+    Editer slider
 @endsection
 
 @section('admin')
@@ -11,7 +11,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Ajouter slider</h4>
+                  <h4 class="card-title">Editer slider</h4>
 
                               @if (Session::has('status'))
                                     <div class="alert alert-success">
@@ -31,15 +31,16 @@
                                   </ul> 
                                 @endif
 
-                      <form class="cmxform" id="signupForm" method="post" action="{{URL::to('/sauveslider')}}" enctype="multipart/form-data">
+                      <form class="cmxform" id="signupForm" method="post" action="{{URL::to('/modifierslider')}}" enctype="multipart/form-data">
                         @csrf
                           <fieldset>
                                 <div class="form-group">
+                                    <input type="hidden" name="id" value="{{ $slider->id }}">
                                      <label for="cname">description one </label>
-                                        <input id="cname" class="form-control" name="description1" minlength="2" type="text" >
+                                        <input id="cname" class="form-control" name="description1" minlength="2" type="text" value="{{$slider->description1}}" >
                                         <div class="form-group">
                                             <label for="cname">description two</label>
-                                            <input id="cname" class="form-control" type="text" name="description2" >
+                                            <input id="cname" class="form-control" type="text" name="description2" value="{{$slider->description}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="cname">Image du slider</label>
@@ -47,7 +48,7 @@
                                         </div>
                                 
                                 </div>
-                                <input class="btn btn-primary" type="submit" value="Ajouter">
+                                <input class="btn btn-primary" type="submit" value="Modifier">
                           </fieldset>
                         </form>
                 </div>
