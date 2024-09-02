@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Commande;
+
 class AdminController extends Controller
 {
     //
@@ -25,7 +27,10 @@ class AdminController extends Controller
     }
 
     public function commande(){
-        return view('admin.commandes');
+
+        $commande = Commande::get();
+
+        return view('admin.commandes')->with('commande', $commande);
     }
 }
 

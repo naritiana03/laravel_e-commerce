@@ -3,7 +3,7 @@
 @section('title')
     Commande
 @endsection
-
+<input type="hidden" name="id" value="{{ $increment=1 }}">
 @section('admin')
 
 
@@ -27,17 +27,23 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2020/03/03</td>
-                        <td>2020/03/03</td>
-                        <td>2020/03/03</td>
-                        <td>2020/03/03</td>
+
+                      @foreach ($commande as $command)
+                      <tr>
+                        <td>{{$increment}}</td>
+                        <td>{{$command->nom}}</td>
+                        <td>{{$command->adresse}}</td>
+                        <td>{{$command->Panier}}</td>
+                        <td>{{$command->paiement}}</td>
                         <td>
                           <button class="btn btn-outline-primary">Edit</button>
                           <button class="btn btn-outline-danger">Delete</button>
                         </td>
-                    </tr>
+                    </tr> 
+                    <input type="hidden" name="id" value="{{ $increment=  $increment +1 }}">
+                      @endforeach
+
+                    
                   </tbody>
                 </table>
               </div>

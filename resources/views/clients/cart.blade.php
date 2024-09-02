@@ -39,7 +39,7 @@
 
                                   @if (Session::has('cart'))
                                       
-                                  @endif
+                              
 
                               <tbody>
 
@@ -74,6 +74,20 @@
   
                                
                               </tbody>
+
+                                  
+                                      
+                                  @else
+                                      
+                                  @if (Session::has('status'))
+
+                                  <div class="alert alert-success">
+                                      {{Session::get('status')}}
+                                  </div>
+                                      
+                                  @endif
+
+                              @endif
                             </table>
                         </div>
                   </div>

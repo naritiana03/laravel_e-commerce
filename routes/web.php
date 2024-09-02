@@ -23,6 +23,7 @@ Route::get('/retirerproduit/{id}', 'App\Http\Controllers\ClientController@retire
 Route::post('/creercompte', 'App\Http\Controllers\ClientController@creercompte');
 Route::post('/accedercompte', 'App\Http\Controllers\ClientController@accedercompte');
 Route::get('/logout', 'App\Http\Controllers\ClientController@logout');
+Route::post('/payer', 'App\Http\Controllers\ClientController@payer');
 
 
 

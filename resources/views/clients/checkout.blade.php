@@ -24,94 +24,74 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
-						<form action="" class="billing-form" method="POST">
+						<form action="{{url('/payer')}}" class="billing-form" method="POST" id="checkout-form">
 
 							@csrf
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
+							@if (Session::has('error'))
+								<div class="alert alert-danger">
+										{{Session::get('error')}}
+										{{Session::put('error',null)}}
+								</div>
+							@endif
 								<div class="row align-items-end">
 									<div class="col-md-6">
 									<div class="form-group">
-										<label for="firstname">Firt Name</label>
-									<input type="text" class="form-control" placeholder="">
+										<label for="firstname">Full Name</label>
+									<input type="text" class="form-control" name="name">
+									</div>
+								</div>
+								
+								
+									
+									
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="lastname">Address</label>
+												<input type="text" class="form-control"  name="address">
+												</div>
+												<div class="w-100"></div>
+												<div class="col-md-6">
+													<div class="form-group">
+													<label for="towncity">Name on card</label>
+												<input type="text" id="card-name" class="form-control" placeholder="">
+												</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+											<label for="lastname">Number</label>
+									<input type="text" id="card-number" class="form-control" placeholder="">
+									</div>
+									</div>
+									<div class="w-100"></div>
+									<div class="col-md-6">
+									<div class="form-group">
+										<label for="phone">Expiration Month</label>
+									<input type="text" id="card-expiry-month" class="form-control" placeholder="">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="lastname">Last Name</label>
-									<input type="text" class="form-control" placeholder="">
+										<label for="emailaddress">Expiration Year</label>
+									<input type="text" id="card-expiry-year"  class="form-control" placeholder="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="emailaddress">CVC</label>
+									<input type="text" id="card-cvc"  class="form-control" placeholder="">
 									</div>
 								</div>
 								<div class="w-100"></div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="country">State / Country</label>
-											<div class="select-wrap">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="" id="" class="form-control">
-											<option value="">France</option>
-											<option value="">Italy</option>
-											<option value="">Philippines</option>
-											<option value="">South Korea</option>
-											<option value="">Hongkong</option>
-											<option value="">Japan</option>
-										</select>
-										</div>
-										</div>
+								<div class="col-md-12">
+									<div class="form-group mt-4">
+													
+														
+									<input type="submit" class="btn btn-success" value="Payer" name="payer"> 
+														
 									</div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-				<div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="emailaddress">CVC</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-md-12">
-                	<div class="form-group mt-4">
-									
-										
-					 <input type="submit" class="btn btn-success" value="Payer" name="payer"> 
-										
-					</div>
-                </div>
-	            </div>
+								</div>
+								</div>
 	          </form><!-- END -->
 					</div>
 					<div class="col-xl-5">
@@ -151,7 +131,8 @@
 		
   @section('script')
 
-	
+	<script src="htpps://js.stripe.com/v15.8/"></script>
+	<script src="src/js/checkout.js"></script>
 
 
   <script>
