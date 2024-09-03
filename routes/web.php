@@ -69,3 +69,7 @@ Route::get('/activerslider/{id}', 'App\Http\Controllers\SliderController@activer
 Route::get('/desactiverslider/{id}', 'App\Http\Controllers\SliderController@desactiverslider');
 Route::get('/deleteslider/{id}', 'App\Http\Controllers\SliderController@deleteslider');
 
+
+Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

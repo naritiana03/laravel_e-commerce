@@ -28,6 +28,9 @@ use Session;
 class ClientController extends Controller
 {
     //
+
+
+    
     public function home(){
 
         $slider = Slider::where('status', 1)->get();
