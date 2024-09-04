@@ -7,19 +7,25 @@
 {{--start content--}}
 		@section('home')
       
+  
+  
     <!-- END nav -->
 
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+
+@foreach ($slider as $slide)
+    
+
+    <div class="hero-wrap hero-bread" style="background-image: url(storage/slider_image/{{$slide->image_slider}});">
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
                 <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
-              <h1 class="mb-0 bread">My Cart</h1>
+              <h1 class="mb-0 bread"></h1>
             </div>
           </div>
         </div>
       </div>
-  
+      @endforeach
       <section class="ftco-section ftco-cart">
               <div class="container">
                   <div class="row">
@@ -130,25 +136,20 @@
                   <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                       <div class="cart-total mb-3">
                           <h3>Cart Totals</h3>
-                          <p class="d-flex">
-                              <span>Subtotal</span>
-                              <span>$20.60</span>
-                          </p>
-                          <p class="d-flex">
-                              <span>Delivery</span>
-                              <span>$0.00</span>
-                          </p>
-                          <p class="d-flex">
-                              <span>Discount</span>
-                              <span>$3.00</span>
-                          </p>
+                         @foreach ($produit as $prod)
+                         <p class="d-flex">
+                          <span>{{$prod['nom_produit']}}</span>
+                          <span>{{$prod['prix_produit']}}</span>
+                      </p>
+                         @endforeach
+                         
                           <hr>
                           <p class="d-flex total-price">
                               <span>Total</span>
-                              <span>$17.60</span>
+                              <span>{{Session::get('cart')->totalPrice}}</span>
                           </p>
                       </div>
-                      <p><a href="{{url('/checkout')}}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                      <p><a href="{{url('/checkout')}}" class="btn btn-primary py-3 px-4">Reserver</a></p>
                   </div>
               </div>
               </div>

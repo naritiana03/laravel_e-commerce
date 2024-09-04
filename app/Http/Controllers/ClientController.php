@@ -68,11 +68,13 @@ class ClientController extends Controller
             return view('clients.shop');
         }
 
+        $slider = Slider::where('status', 1)->get();
+
         $oldCart = Session::has('cart')? Session::get('cart'):null;
 
         $cart = new Cart($oldCart);
 
-        return view('clients.cart', ['produit' => $cart ->items]);
+        return view('clients.cart', ['produit' => $cart ->items])->with('slider', $slider);
 
       
     }

@@ -54,7 +54,7 @@
 
 			<form 	action="{{url('/accedercompte')}}" method="POST" class="login100-form validate-form">
 				@csrf 
-				<a href="{{URL::to('/')}}">
+				<a href="{{URL::to('/checkout')}}">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
