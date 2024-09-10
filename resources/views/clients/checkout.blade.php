@@ -36,55 +36,64 @@
 							@endif
 								<div class="row align-items-end">
 									<div class="col-md-6">
-									<div class="form-group">
-										<label for="firstname">Full Name</label>
-									<input type="text" class="form-control" name="name">
+										<div class="form-group">
+											<label for="firstname">Full Name</label>
+											<input type="text" class="form-control" name="name">
+										</div>
 									</div>
-								</div>
 								
 								
 									
 									
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="lastname">Address</label>
-												<input type="text" class="form-control"  name="address">
-												</div>
-												<div class="w-100"></div>
-												<div class="col-md-6">
-													<div class="form-group">
-													<label for="towncity">Name on card</label>
-												<input type="text" id="card-name" class="form-control" placeholder="">
-												</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-											<label for="lastname">Number</label>
-									<input type="text" id="card-number" class="form-control" placeholder="">
-									</div>
-									</div>
-									<div class="w-100"></div>
 									<div class="col-md-6">
-									<div class="form-group">
-										<label for="phone">Expiration Month</label>
-									<input type="text" id="card-expiry-month" class="form-control" placeholder="">
+										<div class="form-group">
+											<label for="lastname">Address</label>
+												<input type="text" class="form-control"  name="address">
+										</div>
 									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="emailaddress">Expiration Year</label>
-									<input type="text" id="card-expiry-year"  class="form-control" placeholder="">
+
+										
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="towncity">Name on card</label>
+												<input type="text" id="card-name" class="form-control" placeholder="">
+										</div>
 									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label for="emailaddress">CVC</label>
-									<input type="text" id="card-cvc"  class="form-control" placeholder="">
+
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="lastname">Number</label>
+												<input type="text" id="card-number" class="form-control" placeholder="">
+										</div>
 									</div>
-								</div>
-								<div class="w-100"></div>
-								<div class="col-md-12">
-									<div class="form-group mt-4">
+
+
+								
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="phone">Expiration Month</label>
+												<input type="text" id="card-expiry-month" class="form-control" placeholder="">
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="emailaddress">Expiration Year</label>
+											<input type="text" id="card-expiry-year"  class="form-control" placeholder="">
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="emailaddress">CVC</label>
+												<input type="text" id="card-cvc"  class="form-control" placeholder="">
+										</div>
+									</div>
+
+									<div class="w-100"></div>
+									<div class="col-md-12">
+										<div class="form-group mt-4">
 													
 														
 									<input type="submit" class="btn btn-success" value="Payer" name="payer"> 
@@ -92,6 +101,7 @@
 									</div>
 								</div>
 								</div>
+						
 	          </form><!-- END -->
 					</div>
 					<div class="col-xl-5">

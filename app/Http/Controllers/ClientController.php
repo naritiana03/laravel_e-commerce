@@ -13,7 +13,7 @@ use Stripe\Stripe;
 
 use App\Models\Categorie;
 
-
+use App\Models\Commande;
 
 use Illuminate\Support\Facades\Hash;
 
