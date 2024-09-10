@@ -41,7 +41,7 @@
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">youremail@email.com</span>
+						    <span class="text">rantsaemail@email.com</span>
 					    </div>
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
 						    <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -61,7 +61,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 			  <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-			  <li class="nav-item active"><a href="{{URL::to('/shop')}}" class="nav-link">shop</a></li>
+			  <li class="nav-item active"><a href="{{URL::to('/shop')}}" class="nav-link">Event</a></li>
 	          
 	          <li class="nav-item cta cta-colored"><a href="{{url('/cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[{{Session::has('cart')? Session::get('cart')->totalQty:0}}]</a></li>
 
