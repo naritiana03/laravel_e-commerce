@@ -188,3 +188,28 @@ class ProduitController extends Controller
         return redirect('/produit')->with('produit', 'Le produit ' .$produit->nom_produit. 'a été desactivé avec succès' );
     }
 }
+
+
+
+/* 
+
+public function desactiver($id){
+
+        $produit = Produit::find($id);
+
+        $produit->status = 0;
+
+        $produit->update();
+
+        return redirect('/produit')->with('produit', 'Le produit ' .$produit->nom_produit. 'a été desactivé avec succès' );
+    }
+
+       $produit = Produit::find($id);
+
+        $produit->status = 1;
+
+        $produit->update();
+
+        return redirect('/produit')->with('produit', 'Le produit ' .$produit->nom_produit. 'a été activé avec succès' );
+
+*/
